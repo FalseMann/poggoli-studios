@@ -30,9 +30,6 @@ export class App {
   }
 
   async initialize() {
-    await this.setupMultiplayer();
-    this.setupInspector();
-
     window.addEventListener("resize", () => {
       this.engine.resize();
     });
@@ -40,6 +37,10 @@ export class App {
     this.engine.runRenderLoop(() => {
       this.scene.render();
     });
+
+    await this.setupMultiplayer();
+    this.setupInspector();
+
   }
 
   private buildScene(): Scene {
@@ -73,6 +74,7 @@ export class App {
     const playerNextPosition: Record<string, Vector3> = {};
 
     room.state.players.onAdd((player, sessionId) => {
+      console.log("Player added:", sessionId, player);
       const isCurrentPlayer = sessionId === room.sessionId;
 
       const sphere = MeshBuilder.CreateSphere(
