@@ -11,4 +11,4 @@ async function main() {
   await app.initialize();
 }
 
-main();
+window.addEventListener('DOMContentLoaded', main);

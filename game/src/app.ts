@@ -25,7 +25,7 @@ export class App {
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.engine = new Engine(this.canvas, true);
-    this.network = new Colyseus.Client("ws://localhost:2567"); // TODO: make this configurable
+    this.network = new Colyseus.Client("ws://localhost:3001"); // TODO: make this configurable
     this.scene = this.buildScene();
   }
 
